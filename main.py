@@ -3,8 +3,8 @@ import time
 
 from waiting import wait
 
-from output_fxns import get_window_info, get_full_screen, onHomeMenu, onKeepHand
-from input_fxns import click_on, print_coord
+from output_fxns import get_window_info, get_full_screen, onHomeMenu, onKeepHand, locate_leftmost_playable_card
+from input_fxns import click_on, print_coord, playCardAt
 
 if __name__ == "__main__":
 
@@ -23,5 +23,11 @@ if __name__ == "__main__":
 
     while (True):
         time.sleep(1)
-        click_on('PASS')
+        isPlayableCard, leftmost_card_pt = locate_leftmost_playable_card(window_info)
+        img = get_full_screen(window_info)
+        
+        if isPlayableCard:
+            playCardAt(window_info, leftmost_card_pt) 
+        else:
+            click_on('PASS')
 
