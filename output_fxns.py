@@ -2,6 +2,7 @@ import win32gui
 from PIL import ImageGrab
 import numpy as np
 import cv2
+from scipy import ndimage
 
 from util_fxns import areImgsSimilar
 
@@ -78,3 +79,36 @@ def get_screenshot(window_info, x1, y1, x2, y2):
     img_reversed[:,:,2] = img[:,:,0]
 
     return img_reversed
+
+
+def locate_leftmost_playable_card(window_info):
+
+    highlight_color = [255,255,0]
+    lower_bound = np.uint8([254,254,0])
+    upper_bound = np.uint8([255,255,0])
+
+    hand_img = get_hand_region(window_info)
+    mask = cv2.inRange(hand_img, lower_bound, upper_bound)
+    mask = mask.astype(np.float32)
+    
+    template = cv2.imread('./ref_images/corner_mask_1.png')
+    template = cv2.cvtColor(template.astype(np.float32),cv2.COLOR_BGR2GRAY)
+    w, h = template.shape
+
+    leftmost_pt = (mask.shape[1], 0)
+    isPlayableCard = False
+
+    for theta in [0, -10, 10]:
+        template_rotated = ndimage.rotate(template, theta)
+        res = cv2.matchTemplate(mask, template_rotated, cv2.TM_CCOEFF_NORMED)
+        threshold = 0.55
+        loc = np.where(res >= threshold)
+        for pt in zip(*loc[::-1]):
+            if pt[0] < leftmost_pt[0]:
+                leftmost_pt = pt
+    
+
+    if leftmost_pt[0] < mask.shape[1]:
+        isPlayableCard = True
+    leftmost_pt_full_image = [leftmost_pt[0], leftmost_pt[1] + window_info['height_fullscreen'] - 200]
+    return isPlayableCard, leftmost_pt_full_image
