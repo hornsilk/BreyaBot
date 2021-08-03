@@ -1,6 +1,8 @@
 
 from pynput import mouse, keyboard
 
+import time
+from numpy import random
 
 LOCATION_DICT = {
     'PLAY_GAME': (1390, 800),
@@ -20,7 +22,9 @@ mouse = mouse.Controller()
 kboard = keyboard.Controller()
 
 def click(x,y):
+    time.sleep(abs(random.normal(0.1)))
     mouse.position = (x, y)
+    time.sleep(abs(random.normal(0.1)))
     with kboard.pressed(keyboard.Key.shift):
         kboard.press(keyboard.Key.space)
         
