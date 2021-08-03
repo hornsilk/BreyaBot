@@ -4,17 +4,13 @@ from pynput import mouse, keyboard
 import time
 from numpy import random
 
-LOCATION_DICT = {
+CLICK_LOCATION_DICT = {
     'PLAY_GAME': (1390, 800),
     'PLAY_FIRST': (888, 502),
     'KEEP_HAND':(900, 695),
     'LEFTMOST_HAND': (412, 806),
     'DECK': (177, 773),
     'PASS': (1422, 758),
-    'HOME_MENU_C1': (71, 0),
-    'HOME_MENU_C2': (218, 50),
-    'KEEP_HAND_C1': (808, 684),
-    'KEEP_HAND_C2': (1015, 722),
 }
 
 
@@ -30,7 +26,7 @@ def click(x,y):
         
 def click_on(item):
     try:
-        (x,y) = LOCATION_DICT[item]
+        (x,y) = CLICK_LOCATION_DICT[item]
     except FileNotFoundError as e:
         print('unknown item', item)
 

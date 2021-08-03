@@ -4,7 +4,13 @@ import numpy as np
 import cv2
 
 from util_fxns import areImgsSimilar
-from input_fxns import LOCATION_DICT
+
+VIEW_LOCATION_DICT = {
+    'HOME_MENU_C1': (71, 0),
+    'HOME_MENU_C2': (318, 100),
+    'KEEP_HAND_C1': (1008, 834),
+    'KEEP_HAND_C2': (1265, 922),
+}
 
 WINDOW_SUBSTRING = 'MTGA'
 
@@ -42,17 +48,17 @@ def get_full_screen(window_info):
     return get_screenshot(window_info, x1, y1, x2, y2)
 
 def onKeepHand(window_info):
-    (x1, y1) = LOCATION_DICT['KEEP_HAND_C1']
-    (x2, y2) = LOCATION_DICT['KEEP_HAND_C2']
-    img = get_screenshot(window_info, x1+200, y1+150, x2+250, y2+200)
+    (x1, y1) = VIEW_LOCATION_DICT['KEEP_HAND_C1']
+    (x2, y2) = VIEW_LOCATION_DICT['KEEP_HAND_C2']
+    img = get_screenshot(window_info, x1, y1, x2, y2)
 
     ref_img = cv2.imread('./ref_images/keep_hand.png')
     return areImgsSimilar(img, ref_img)
 
 def onHomeMenu(window_info):
-    (x1, y1) = LOCATION_DICT['HOME_MENU_C1']
-    (x2, y2) = LOCATION_DICT['HOME_MENU_C2']
-    img = get_screenshot(window_info, x1, y1, x2+100, y2+50)
+    (x1, y1) = VIEW_LOCATION_DICT['HOME_MENU_C1']
+    (x2, y2) = VIEW_LOCATION_DICT['HOME_MENU_C2']
+    img = get_screenshot(window_info, x1, y1, x2, y2)
 
     ref_img = cv2.imread('./ref_images/home.png')
     return areImgsSimilar(img, ref_img)
