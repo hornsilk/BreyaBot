@@ -11,7 +11,6 @@ def get_window_info():
     return window_info
 
 
-
 # sets L2 window coordinates
 def set_window_coordinates(hwnd, window_info):
     if win32gui.IsWindowVisible(hwnd):
@@ -32,11 +31,12 @@ def set_window_coordinates(hwnd, window_info):
 
 def get_full_screen(window_info):
     x1 = window_info['x'] 
-    x2 = window_info['x'] + window_info['width'] 
+    x2 = window_info['x'] + window_info['width_fullscreen'] 
     y1 = window_info['y'] 
-    y2 = window_info['y'] + window_info['height'] 
+    y2 = window_info['y'] + window_info['height_fullscreen'] 
 
     return get_screenshot(window_info, x1, y1, x2, y2)
+
 
 def get_screenshot(window_info, x1, y1, x2, y2):
     win32gui.SetForegroundWindow(window_info['hwnd'])
