@@ -44,4 +44,8 @@ def get_screenshot(window_info, x1, y1, x2, y2):
     box = (x1, y1, x2, y2)
     screen = ImageGrab.grab(box)
     img = np.array(screen.getdata(), dtype=float).reshape((screen.size[1], screen.size[0], 3))
-    return img
+    img_reversed = img.copy()
+    img_reversed[:,:,0] = img[:,:,2]
+    img_reversed[:,:,2] = img[:,:,0]
+
+    return img_reversed
