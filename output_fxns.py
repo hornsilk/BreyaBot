@@ -39,14 +39,6 @@ def set_window_coordinates(hwnd, window_info):
             win32gui.SetForegroundWindow(hwnd)
 
 
-def get_full_screen(window_info):
-    x1 = window_info['x'] 
-    x2 = window_info['x'] + window_info['width_fullscreen'] 
-    y1 = window_info['y'] 
-    y2 = window_info['y'] + window_info['height_fullscreen'] 
-
-    return get_screenshot(window_info, x1, y1, x2, y2)
-
 def onKeepHand(window_info):
     return onScreen('KEEP_HAND', window_info)
 
@@ -61,6 +53,14 @@ def onScreen(element_to_look_for, window_info):
     return areImgsSimilar(img, ref_img)
 
 
+def get_full_screen(window_info):
+    x1 = window_info['x'] 
+    x2 = window_info['x'] + window_info['width_fullscreen'] 
+    y1 = window_info['y'] 
+    y2 = window_info['y'] + window_info['height_fullscreen'] 
+
+    return get_screenshot(window_info, x1, y1, x2, y2)
+    
 def get_screenshot(window_info, x1, y1, x2, y2):
     win32gui.SetForegroundWindow(window_info['hwnd'])
 
