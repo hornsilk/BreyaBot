@@ -46,7 +46,7 @@ def onKeepHand(window_info):
     (x2, y2) = LOCATION_DICT['KEEP_HAND_C2']
     img = get_screenshot(window_info, x1+200, y1+150, x2+250, y2+200)
 
-    ref_img = cv2.imread('keep_hand.png')
+    ref_img = cv2.imread('./ref_images/keep_hand.png')
     return areImgsSimilar(img, ref_img)
 
 def onHomeMenu(window_info):
@@ -54,7 +54,7 @@ def onHomeMenu(window_info):
     (x2, y2) = LOCATION_DICT['HOME_MENU_C2']
     img = get_screenshot(window_info, x1, y1, x2+100, y2+50)
 
-    ref_img = cv2.imread('home.png')
+    ref_img = cv2.imread('./ref_images/home.png')
     return areImgsSimilar(img, ref_img)
 
 def get_screenshot(window_info, x1, y1, x2, y2):
