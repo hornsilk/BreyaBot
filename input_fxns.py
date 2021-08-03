@@ -1,11 +1,10 @@
 
-from pynput.mouse import Button, Controller
-import time
+from pynput import mouse, keyboard
 
-mouse = Controller()
+mouse = mouse.Controller()
+kboard = keyboard.Controller()
 
 def click_on(x,y):
     mouse.position = (x, y)
-
-    time.sleep(1)
-    mouse.click(Button.left, 1)
+    with kboard.pressed(keyboard.Key.shift):
+        kboard.press(keyboard.Key.space)
