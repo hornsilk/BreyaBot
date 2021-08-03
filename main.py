@@ -17,7 +17,6 @@ if __name__ == "__main__":
     wait(lambda: onHomeMenu(window_info), timeout_seconds=120, waiting_for='MTGA_BOT: waiting for home menu')
     while(onHomeMenu(window_info)):
         click_on('PLAY_GAME')
-        time.sleep(1)
 
     wait(lambda: onKeepHand(window_info), timeout_seconds=120, waiting_for='MTGA_BOT: waiting for keep hand')
     click_on('KEEP_HAND')

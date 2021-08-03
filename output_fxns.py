@@ -48,20 +48,18 @@ def get_full_screen(window_info):
     return get_screenshot(window_info, x1, y1, x2, y2)
 
 def onKeepHand(window_info):
-    (x1, y1) = VIEW_LOCATION_DICT['KEEP_HAND_C1']
-    (x2, y2) = VIEW_LOCATION_DICT['KEEP_HAND_C2']
-    img = get_screenshot(window_info, x1, y1, x2, y2)
-
-    ref_img = cv2.imread('./ref_images/keep_hand.png')
-    return areImgsSimilar(img, ref_img)
+    return onScreen('KEEP_HAND', window_info)
 
 def onHomeMenu(window_info):
-    (x1, y1) = VIEW_LOCATION_DICT['HOME_MENU_C1']
-    (x2, y2) = VIEW_LOCATION_DICT['HOME_MENU_C2']
-    img = get_screenshot(window_info, x1, y1, x2, y2)
+    return onScreen('HOME_MENU', window_info)
 
-    ref_img = cv2.imread('./ref_images/home.png')
+def onScreen(element_to_look_for, window_info):
+    (x1, y1) = VIEW_LOCATION_DICT[f'{element_to_look_for}_C1']
+    (x2, y2) = VIEW_LOCATION_DICT[f'{element_to_look_for}_C2']
+    img = get_screenshot(window_info, x1, y1, x2, y2)
+    ref_img = cv2.imread(f'./ref_images/{element_to_look_for}.png')
     return areImgsSimilar(img, ref_img)
+
 
 def get_screenshot(window_info, x1, y1, x2, y2):
     win32gui.SetForegroundWindow(window_info['hwnd'])
