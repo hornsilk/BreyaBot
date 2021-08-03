@@ -11,6 +11,8 @@ VIEW_LOCATION_DICT = {
     'HOME_MENU_C2': (318, 100),
     'KEEP_HAND_C1': (1008, 834),
     'KEEP_HAND_C2': (1265, 922),
+    'PASS_BUTTON_C1': (1672, 923),
+    'PASS_BUTTON_C2': (1722, 978),
 }
 
 WINDOW_SUBSTRING = 'MTGA'
@@ -49,6 +51,15 @@ def onKeepHand(window_info):
 
 def onHomeMenu(window_info):
     return onScreen('HOME_MENU', window_info)
+
+def hasPriority(window_info):
+    # element_to_look_for = 'PASS_BUTTON'
+    # (x1, y1) = VIEW_LOCATION_DICT[f'{element_to_look_for}_C1']
+    # (x2, y2) = VIEW_LOCATION_DICT[f'{element_to_look_for}_C2']
+    # img = get_screenshot(window_info, x1, y1, x2, y2)
+    # cv2.imwrite('./ref_images/PASS_BUTTON.png',img)
+    return onScreen('PASS_BUTTON', window_info)
+
 
 def onScreen(element_to_look_for, window_info):
     (x1, y1) = VIEW_LOCATION_DICT[f'{element_to_look_for}_C1']
