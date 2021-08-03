@@ -19,6 +19,10 @@ def get_window_info():
     # set window info
     window_info = {}
     win32gui.EnumWindows(set_window_coordinates, window_info)
+    
+    # make sure MTGA resolution is 1920x1080 and full screen
+    window_info['width_fullscreen'] = 1920
+    window_info['height_fullscreen'] = 1080
     return window_info
 
 

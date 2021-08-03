@@ -10,10 +10,6 @@ if __name__ == "__main__":
 
     window_info = get_window_info()
 
-    # make sure MTGA resolution is 1920x1080 and full screen
-    window_info['width_fullscreen'] = 1920
-    window_info['height_fullscreen'] = 1080
-
     wait(lambda: onHomeMenu(window_info), timeout_seconds=120, waiting_for='MTGA_BOT: waiting for home menu')
     while(onHomeMenu(window_info)):
         click_on('PLAY_GAME')
