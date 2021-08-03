@@ -31,10 +31,10 @@ def set_window_coordinates(hwnd, window_info):
 
 
 def get_full_screen(window_info):
-    x1 = window_info['x'] + 176
-    y1 = window_info['y'] + 5
-    x2 = window_info['x'] + window_info['width'] + 360
-    y2 = window_info['y'] + window_info['height'] + 124
+    x1 = window_info['x'] 
+    x2 = window_info['x'] + window_info['width'] 
+    y1 = window_info['y'] 
+    y2 = window_info['y'] + window_info['height'] 
 
     return get_screenshot(window_info, x1, y1, x2, y2)
 
