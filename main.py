@@ -1,10 +1,12 @@
-from test_fxns import get_window_info, get_full_screen
 import cv2
+import time
+
+from test_fxns import get_window_info, get_full_screen
 
 WINDOW_SUBSTRING = 'MTGA'
 
-
 if __name__ == "__main__":
+    time.sleep(2)
 
     window_info = get_window_info()
 
