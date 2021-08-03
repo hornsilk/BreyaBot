@@ -20,10 +20,24 @@ kboard = keyboard.Controller()
 def click(x,y):
     time.sleep(abs(random.normal(0.1)))
     mouse.position = (x, y)
-    time.sleep(abs(random.normal(0.1)))
+    time.sleep(abs(random.normal(0.5)))
     with kboard.pressed(keyboard.Key.shift):
         kboard.press(keyboard.Key.space)
-        
+
+def click_down(x,y):
+    time.sleep(abs(random.normal(0.1)))
+    mouse.position = (x, y)
+    time.sleep(abs(random.normal(0.5)))
+    with kboard.pressed(keyboard.Key.shift):
+        kboard.press(',')
+
+def click_up(x,y):
+    time.sleep(abs(random.normal(0.1)))
+    mouse.position = (x, y)
+    time.sleep(abs(random.normal(0.5)))
+    with kboard.pressed(keyboard.Key.shift):
+        kboard.press('.')
+
 def click_on(item):
     try:
         (x,y) = CLICK_LOCATION_DICT[item]
