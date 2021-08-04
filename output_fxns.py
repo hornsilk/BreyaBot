@@ -15,8 +15,17 @@ VIEW_LOCATION_DICT = {
     'PASS_BUTTON_C2': (1722, 978),
     'BLOCK_BUTTON_C1': (1672, 923),
     'BLOCK_BUTTON_C2': (1722, 978),
-    'VIEW_BATTLEFIELD_C1': (1672, 923-900),
-    'VIEW_BATTLEFIELD_C2': (1722, 978-900),
+
+REF_IMG_DICT = {
+    'BLOCK_BUTTON': cv2.imread('./ref_images/BLOCK_BUTTON.png'),
+    'corner_mask_0': cv2.imread('./ref_images/corner_mask_0.png'),
+    'corner_mask_1': cv2.imread('./ref_images/corner_mask_1.png'),
+    'corner_mask': cv2.imread('./ref_images/corner_mask.png'),
+    'HOME_MENU': cv2.imread('./ref_images/HOME_MENU.png'),
+    'KEEP_HAND': cv2.imread('./ref_images/KEEP_HAND.png'),
+    'PASS_BUTTON': cv2.imread('./ref_images/PASS_BUTTON.png'),
+    'VIEW_BATTLEFIELD': cv2.imread('./ref_images/VIEW_BATTLEFIELD.png'),
+    'BLACK_BAR': cv2.imread('./ref_images/BLACK_BAR.png'),
 }
 
 WINDOW_SUBSTRING = 'MTGA'
@@ -65,13 +74,13 @@ def hasBlockingPriority(full_screen_img):
 def isGameOver(full_screen_img):
     return onScreen('VIEW_BATTLEFIELD', full_screen_img)
 
-def onScreen(element_to_look_for, full_screen_img):
+def onScreen(element_to_look_for, full_screen_img, cutoff=10000):
     (x1, y1) = VIEW_LOCATION_DICT[f'{element_to_look_for}_C1']
     (x2, y2) = VIEW_LOCATION_DICT[f'{element_to_look_for}_C2']
     img = full_screen_img[y1:y2,x1:x2]
-    # cv2.imwrite(f'test_{element_to_look_for}.png', img)
-    ref_img = cv2.imread(f'./ref_images/{element_to_look_for}.png')
-    return areImgsSimilar(img, ref_img)
+    cv2.imwrite(f'test_{element_to_look_for}.png', img)
+    ref_img = REF_IMG_DICT[element_to_look_for]
+    return areImgsSimilar(img, ref_img, cutoff=cutoff)
 
 def get_game_state(window_info):
     
