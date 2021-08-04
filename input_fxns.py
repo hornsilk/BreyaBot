@@ -47,20 +47,18 @@ def click_on(item):
         print('unknown item', item)
 
     click(x,y)
-    print(f'MTGA_BOT: {item} clicked')
+    print(f'BreyaBot: {item} clicked')
 
 def move_card(x1, y1, x2, y2):
     click_down(x1,y1)
     click_up(x2,y2)
-    print(f'MTGA_BOT: moved card from ({x1},{y1}) -> ({x2},{y2})')
+    print(f'BreyaBot: moved card from ({int(x1)},{int(y1)}) -> ({int(x2)},{int(y2)})')
 
 
 def print_coord():
     print(mouse.position)
 
 def playCardAt(window_info, card_tl_corner):
-    print(card_tl_corner)
-
     x1 = card_tl_corner[0]
     y1 = card_tl_corner[1]
 

@@ -7,6 +7,7 @@ if __name__ == "__main__":
 
     # setup
     window_info = get_window_info()
+    print('BreyaBot ONLINE')
 
     # game loop
     while (True):
@@ -41,7 +42,7 @@ if __name__ == "__main__":
             click_on('CENTER')
 
         elif state == 'INACTIVE':
-            time.sleep(0.5)
+            time.sleep(1)
 
 
 
