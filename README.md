@@ -4,6 +4,8 @@
 
 Directly inspired by Reddit user /u/lawrieee's [post](https://www.reddit.com/r/MagicArena/comments/otykvn/i_played_cards_left_to_right_for_652_games_in/) where they only played their leftmost card, making no decisions, and eventually hit mythic. This bot is a quick and incredibly messy implementation of just that strategy, playing their same deck left to right over and over.
 
+![Gameplay Video](<div style="width:100%;height:0px;position:relative;padding-bottom:56.250%;"><iframe src="https://streamable.com/e/7sibtw" frameborder="0" width="100%" height="100%" allowfullscreen style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden;"></iframe></div>)
+
 ## Our Progress to Mythic
 
 Follow BreyaBot at our [untapped.gg page](https://mtga.untapped.gg/profile/7c67700d-e46a-46c0-b01a-16eae4d8ea55/ORTRAKF7FVBM7O3ASROZHCG2HQ/deck/51f5a152-6b40-47cd-85ff-f5fcdece5b4c?timeFrame=current_season&gameType=constructed&constructedType=ranked) or friend her at `BreyaBot#37727` on MTGA. We're not doing friend battles just yet.
