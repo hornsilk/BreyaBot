@@ -64,6 +64,9 @@ def playCardAt(window_info, card_tl_corner):
 
     if x1 > 850:
         x1 -= 50
+    elif x1 < 500:
+        x1 -= 50
+        y1 -= 50
 
     x_center = window_info['width'] / 2
     y_center = window_info['height'] / 2
