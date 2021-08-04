@@ -12,7 +12,8 @@ CLICK_LOCATION_DICT = {
     'DECK': (177, 773),
     'PASS': (1422, 758),
     'OPPONENT': (765, 82),
-    'CENTER': (720, 400)
+    'CENTER': (720, 400),
+    'RIGHT_EDGE': (1534, 466),
 }
 
 

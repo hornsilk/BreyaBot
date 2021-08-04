@@ -39,7 +39,7 @@ if __name__ == "__main__":
             click_on('KEEP_HAND')
 
         elif state == 'LOADSCREEN':
-            click_on('CENTER')
+            click_on('RIGHT_EDGE')
 
         elif state == 'INACTIVE':
             time.sleep(1)
