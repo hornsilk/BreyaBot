@@ -1,3 +1,9 @@
+^SPACE::  Winset, Alwaysontop, , A
+return
+
+^+SPACE::  Winset, Alwaysontop, off , A
+return
+
 #IfWinActive MTGA
 +Space::
 Click
