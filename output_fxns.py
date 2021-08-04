@@ -85,7 +85,7 @@ def onScreen(element_to_look_for, full_screen_img, cutoff=10000):
     (x1, y1) = VIEW_LOCATION_DICT[f'{element_to_look_for}_C1']
     (x2, y2) = VIEW_LOCATION_DICT[f'{element_to_look_for}_C2']
     img = full_screen_img[y1:y2,x1:x2]
-    cv2.imwrite(f'test_{element_to_look_for}.png', img)
+    # cv2.imwrite(f'test_{element_to_look_for}.png', img)
     ref_img = REF_IMG_DICT[element_to_look_for]
     return areImgsSimilar(img, ref_img, cutoff=cutoff)
 
@@ -153,7 +153,10 @@ def locate_leftmost_playable_card(window_info):
     lower_bound = np.uint8([254,254,0])
     upper_bound = np.uint8([255,255,0])
 
-    hand_img = get_hand_region(window_info)
+    ret, hand_img = get_hand_region(window_info)
+    if not ret:
+        return False, []
+
     mask = cv2.inRange(hand_img, lower_bound, upper_bound)
     mask = mask.astype(np.float32)
     
