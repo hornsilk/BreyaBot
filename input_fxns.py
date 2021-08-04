@@ -62,7 +62,7 @@ def playCardAt(window_info, card_tl_corner):
     x1 = card_tl_corner[0]
     y1 = card_tl_corner[1]
 
-    if x1 > 900:
+    if x1 > 700:
         x1 -= 100
     elif x1 < 500:
         x1 -= 50
