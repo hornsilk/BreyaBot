@@ -72,6 +72,16 @@ def onScreen(element_to_look_for, window_info):
     ref_img = cv2.imread(f'./ref_images/{element_to_look_for}.png')
     return areImgsSimilar(img, ref_img)
 
+def get_game_state(window_info):
+    if onHomeMenu:
+        return 'HOMESCREEN'
+    if hasPriority:
+        return 'PRIORITY'
+    elif hasBlockingPriority:
+        return 'BLOCKING'
+    elif isGameOver:
+        return 'ENDOFGAME'
+
 
 def get_hand_region(window_info):
     x1 = window_info['x'] 
