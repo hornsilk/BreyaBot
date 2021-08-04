@@ -50,36 +50,40 @@ def set_window_coordinates(hwnd, window_info):
             win32gui.SetForegroundWindow(hwnd)
 
 
-def onKeepHand(window_info):
-    return onScreen('KEEP_HAND', window_info)
+def onKeepHand(full_screen_img):
+    return onScreen('KEEP_HAND', full_screen_img)
 
-def onHomeMenu(window_info):
-    return onScreen('HOME_MENU', window_info)
+def onHomeMenu(full_screen_img):
+    return onScreen('HOME_MENU', full_screen_img)
 
-def hasPriority(window_info):
-    return onScreen('PASS_BUTTON', window_info)
+def hasPriority(full_screen_img):
+    return onScreen('PASS_BUTTON', full_screen_img)
 
-def hasBlockingPriority(window_info):
-    return onScreen('BLOCK_BUTTON', window_info)
+def hasBlockingPriority(full_screen_img):
+    return onScreen('BLOCK_BUTTON', full_screen_img)
 
-def isGameOver(window_info):
-    return onScreen('VIEW_BATTLEFIELD', window_info)
+def isGameOver(full_screen_img):
+    return onScreen('VIEW_BATTLEFIELD', full_screen_img)
 
-def onScreen(element_to_look_for, window_info):
+def onScreen(element_to_look_for, full_screen_img):
     (x1, y1) = VIEW_LOCATION_DICT[f'{element_to_look_for}_C1']
     (x2, y2) = VIEW_LOCATION_DICT[f'{element_to_look_for}_C2']
-    img = get_screenshot(window_info, x1, y1, x2, y2)
+    img = full_screen_img[y1:y2,x1:x2]
+    # cv2.imwrite(f'test_{element_to_look_for}.png', img)
     ref_img = cv2.imread(f'./ref_images/{element_to_look_for}.png')
     return areImgsSimilar(img, ref_img)
 
 def get_game_state(window_info):
-    if onHomeMenu:
+    img = get_full_screen(window_info)
+    if onHomeMenu(img):
         return 'HOMESCREEN'
-    if hasPriority:
+    elif hasPriority(img):
         return 'PRIORITY'
-    elif hasBlockingPriority:
+    elif hasBlockingPriority(img):
         return 'BLOCKING'
-    elif isGameOver:
+    elif onKeepHand(img):
+        return 'MULLIGAN'
+    elif isGameOver(img):
         return 'ENDOFGAME'
 
 
