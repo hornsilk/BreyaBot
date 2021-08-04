@@ -15,6 +15,11 @@ VIEW_LOCATION_DICT = {
     'PASS_BUTTON_C2': (1722, 978),
     'BLOCK_BUTTON_C1': (1672, 923),
     'BLOCK_BUTTON_C2': (1722, 978),
+    'VIEW_BATTLEFIELD_C1': (1672, 23),
+    'VIEW_BATTLEFIELD_C2': (1722, 78),
+    'BLACK_BAR_C1': (0, 23),
+    'BLACK_BAR_C2': (1920, 78),
+}
 
 REF_IMG_DICT = {
     'BLOCK_BUTTON': cv2.imread('./ref_images/BLOCK_BUTTON.png'),
@@ -58,6 +63,8 @@ def set_window_coordinates(hwnd, window_info):
             window_info['hwnd'] = hwnd
             win32gui.SetForegroundWindow(hwnd)
 
+def isLoadingScreen(full_screen_img):
+    return onScreen('BLACK_BAR', full_screen_img, cutoff=1000)
 
 def onKeepHand(full_screen_img):
     return onScreen('KEEP_HAND', full_screen_img)
@@ -88,12 +95,14 @@ def get_game_state(window_info):
     if ret:
         if onHomeMenu(img):
             return 'HOMESCREEN'
+        elif isLoadingScreen(img):
+            return 'LOADSCREEN'
+        elif onKeepHand(img):
+            return 'MULLIGAN'
         elif hasPriority(img):
             return 'PRIORITY'
         elif hasBlockingPriority(img):
             return 'BLOCKING'
-        elif onKeepHand(img):
-            return 'MULLIGAN'
         elif isGameOver(img):
             return 'ENDOFGAME'
     else:
