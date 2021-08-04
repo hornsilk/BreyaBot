@@ -74,17 +74,27 @@ def onScreen(element_to_look_for, full_screen_img):
     return areImgsSimilar(img, ref_img)
 
 def get_game_state(window_info):
-    img = get_full_screen(window_info)
-    if onHomeMenu(img):
-        return 'HOMESCREEN'
-    elif hasPriority(img):
-        return 'PRIORITY'
-    elif hasBlockingPriority(img):
-        return 'BLOCKING'
-    elif onKeepHand(img):
-        return 'MULLIGAN'
-    elif isGameOver(img):
-        return 'ENDOFGAME'
+    
+    ret, img = get_full_screen(window_info)
+    if ret:
+        if onHomeMenu(img):
+            return 'HOMESCREEN'
+        elif hasPriority(img):
+            return 'PRIORITY'
+        elif hasBlockingPriority(img):
+            return 'BLOCKING'
+        elif onKeepHand(img):
+            return 'MULLIGAN'
+        elif isGameOver(img):
+            return 'ENDOFGAME'
+    else:
+        return 'INACTIVE'
+
+def game_is_active():
+    if WINDOW_SUBSTRING in win32gui.GetWindowText(win32gui.GetForegroundWindow()):
+        return True
+    else: 
+        return False
 
 
 def get_hand_region(window_info):
@@ -102,16 +112,21 @@ def get_full_screen(window_info):
     return get_screenshot(window_info, x1, y1, x2, y2)
 
 def get_screenshot(window_info, x1, y1, x2, y2):
-    win32gui.SetForegroundWindow(window_info['hwnd'])
+    # win32gui.SetForegroundWindow(window_info['hwnd'])
 
-    box = (x1, y1, x2, y2)
-    screen = ImageGrab.grab(box)
-    img = np.array(screen.getdata(), dtype=float).reshape((screen.size[1], screen.size[0], 3))
-    img_reversed = img.copy()
-    img_reversed[:,:,0] = img[:,:,2]
-    img_reversed[:,:,2] = img[:,:,0]
+    ret = game_is_active()
 
-    return img_reversed
+    if ret:
+        box = (x1, y1, x2, y2)
+        screen = ImageGrab.grab(box)
+        img = np.array(screen.getdata(), dtype=float).reshape((screen.size[1], screen.size[0], 3))
+        img_reversed = img.copy()
+        img_reversed[:,:,0] = img[:,:,2]
+        img_reversed[:,:,2] = img[:,:,0]
+    else:
+        img_reversed = np.zeros((window_info['height_fullscreen'], window_info['width_fullscreen'], 3))
+
+    return ret, img_reversed
 
 
 def locate_leftmost_playable_card(window_info):
