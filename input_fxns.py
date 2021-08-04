@@ -11,6 +11,8 @@ CLICK_LOCATION_DICT = {
     'LEFTMOST_HAND': (412, 806),
     'DECK': (177, 773),
     'PASS': (1422, 758),
+    'OPPONENT': (765, 82),
+    'CENTER': (720, 400)
 }
 
 
