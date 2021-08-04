@@ -66,13 +66,13 @@ def onHomeMenu(full_screen_img):
     return onScreen('HOME_MENU', full_screen_img)
 
 def hasPriority(full_screen_img):
-    return onScreen('PASS_BUTTON', full_screen_img)
+    return onScreen('PASS_BUTTON', full_screen_img, cutoff=7500)
 
 def hasBlockingPriority(full_screen_img):
     return onScreen('BLOCK_BUTTON', full_screen_img)
 
 def isGameOver(full_screen_img):
-    return onScreen('VIEW_BATTLEFIELD', full_screen_img)
+    return onScreen('VIEW_BATTLEFIELD', full_screen_img, cutoff=5000)
 
 def onScreen(element_to_look_for, full_screen_img, cutoff=10000):
     (x1, y1) = VIEW_LOCATION_DICT[f'{element_to_look_for}_C1']
@@ -148,7 +148,7 @@ def locate_leftmost_playable_card(window_info):
     mask = cv2.inRange(hand_img, lower_bound, upper_bound)
     mask = mask.astype(np.float32)
     
-    template = cv2.imread('./ref_images/corner_mask_1.png')
+    template = REF_IMG_DICT['corner_mask_1']
     template = cv2.cvtColor(template.astype(np.float32),cv2.COLOR_BGR2GRAY)
     w, h = template.shape
 
