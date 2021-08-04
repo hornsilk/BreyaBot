@@ -3,8 +3,7 @@ import time
 
 from waiting import wait
 
-from output_fxns import get_window_info, get_full_screen, onHomeMenu, onKeepHand
-from input_fxns import click_on, print_coord
+from output_fxns import get_window_info, get_full_screen
 
 if __name__ == "__main__":
 
