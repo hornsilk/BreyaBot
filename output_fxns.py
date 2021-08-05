@@ -33,7 +33,7 @@ REF_IMG_DICT = {
     'BLACK_BAR': cv2.imread('./ref_images/BLACK_BAR.png'),
 }
 
-WINDOW_SUBSTRING = 'MTGA'
+WINDOW_STRING = 'MTGA'
 
 def get_window_info():
     # set window info
@@ -49,7 +49,7 @@ def get_window_info():
 # sets L2 window coordinates
 def set_window_coordinates(hwnd, window_info):
     if win32gui.IsWindowVisible(hwnd):
-        if WINDOW_SUBSTRING in win32gui.GetWindowText(hwnd):
+        if WINDOW_STRING == win32gui.GetWindowText(hwnd):
             rect = win32gui.GetWindowRect(hwnd)
             x = rect[0]
             y = rect[1]
@@ -109,7 +109,7 @@ def get_game_state(window_info):
         return 'INACTIVE'
 
 def game_is_active():
-    if WINDOW_SUBSTRING in win32gui.GetWindowText(win32gui.GetForegroundWindow()):
+    if WINDOW_STRING == win32gui.GetWindowText(win32gui.GetForegroundWindow()):
         return True
     else: 
         return False
