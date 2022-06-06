@@ -64,10 +64,10 @@ def playCardAt(window_info, card_tl_corner):
     y1 = card_tl_corner[1]
 
     if x1 > 700:
-        x1 -= 100
+        x1 -= random.randint(10,100)
     elif x1 < 500:
-        x1 -= 50
-        y1 -= 50
+        x1 -= random.randint(10,50)
+        y1 -= random.randint(10,50)
 
     x_center = window_info['width'] / 2
     y_center = window_info['height'] / 2
