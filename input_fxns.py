@@ -13,7 +13,7 @@ CLICK_LOCATION_DICT = {
     'PASS': (1422, 758),
     'OPPONENT': (765, 82),
     'CENTER': (720, 400),
-    'DONE_BUTTON': (720, 700),
+    'DIALOG_DONE': (720, 700),
     'RIGHT_EDGE': (1534, 466),
 }
 

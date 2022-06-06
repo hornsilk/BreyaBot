@@ -38,8 +38,8 @@ if __name__ == "__main__":
         elif state == 'MULLIGAN':
             click_on('KEEP_HAND')
 
-        elif state == 'ORDER_BLOCKERS':
-            click_on('DONE_BUTTON')
+        elif state == 'DIALOG':
+            click_on('DIALOG_DONE')
 
         elif state == 'LOADSCREEN':
             click_on('RIGHT_EDGE')
