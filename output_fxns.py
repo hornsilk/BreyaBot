@@ -19,6 +19,8 @@ VIEW_LOCATION_DICT = {
     'VIEW_BATTLEFIELD_C2': (1722, 78),
     'BLACK_BAR_C1': (0, 23),
     'BLACK_BAR_C2': (1920, 78),
+    'BLOCKERS_DONE_C1': (830,850),
+    'BLOCKERS_DONE_C2': (1090,900),
 }
 
 REF_IMG_DICT = {
@@ -31,6 +33,7 @@ REF_IMG_DICT = {
     'PASS_BUTTON': cv2.imread('./ref_images/PASS_BUTTON.png'),
     'VIEW_BATTLEFIELD': cv2.imread('./ref_images/VIEW_BATTLEFIELD.png'),
     'BLACK_BAR': cv2.imread('./ref_images/BLACK_BAR.png'),
+    'BLOCKERS_DONE': cv2.imread('./ref_images/BLOCKERS_DONE.png'),
 }
 
 WINDOW_STRING = 'MTGA'
@@ -78,6 +81,9 @@ def hasPriority(full_screen_img):
 def hasBlockingPriority(full_screen_img):
     return onScreen('BLOCK_BUTTON', full_screen_img)
 
+def isOrderBlockers(full_screen_img):
+    return onScreen('BLOCKERS_DONE', full_screen_img)
+
 def isGameOver(full_screen_img):
     return onScreen('VIEW_BATTLEFIELD', full_screen_img, cutoff=5000)
 
@@ -105,6 +111,8 @@ def get_game_state(window_info):
             return 'PRIORITY'
         elif hasBlockingPriority(img):
             return 'BLOCKING'
+        elif isOrderBlockers(img):
+            return 'ORDER_BLOCKERS'
         elif isGameOver(img):
             return 'ENDOFGAME'
     else:
