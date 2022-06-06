@@ -1,14 +1,13 @@
 Deck
-20 Mountain (STX) 373
+20 Mountain (ANB) 114
 4 Cavalcade of Calamity (RNA) 95
 4 Grim Initiate (WAR) 130
 4 Scorch Spitter (M20) 159
 4 Tin Street Cadet (ANB) 87
-1 Forbidden Friendship (IKO) 119
 4 Chandra's Spitfire (M20) 132
 4 Goblin Javelineer (AFR) 144
 4 Chandra's Pyreling (M21) 138
-4 Raptor Hatchling (XLN) 155
 4 Raid Bombardment (ANB) 82
-1 Dragon's Approach (STX) 97
 2 Torbran, Thane of Red Fell (ELD) 147
+3 Grotag Bug-Catcher (ZNR) 142
+3 Goblin Instigator (M19) 142
