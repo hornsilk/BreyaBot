@@ -8,7 +8,7 @@ Directly inspired by Reddit user /u/lawrieee's [post](https://www.reddit.com/r/M
 
 ## Our Progress to Mythic
 
-Follow BreyaBot at our [untapped.gg page](https://mtga.untapped.gg/profile/7c67700d-e46a-46c0-b01a-16eae4d8ea55/ORTRAKF7FVBM7O3ASROZHCG2HQ/deck/51f5a152-6b40-47cd-85ff-f5fcdece5b4c?timeFrame=current_season&gameType=constructed&constructedType=ranked) or friend her at `BreyaBot#37727` on MTGA. We're not doing friend battles just yet.
+Follow BreyaBot at our [untapped.gg page](https://mtga.untapped.gg/profile/d2281e0b-df47-4daa-8037-741ccba6b6b8/ORTRAKF7FVBM7O3ASROZHCG2HQ/deck/51f5a152-6b40-47cd-85ff-f5fcdece5b4c?timeFrame=last_two_sets&gameType=constructed&constructedType=ranked) or friend her at `BreyaBot#37727` on MTGA. We're not doing friend battles just yet.
 
 ## The Code
 
