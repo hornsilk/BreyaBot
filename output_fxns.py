@@ -81,11 +81,13 @@ def hasBlockingPriority(full_screen_img):
 def isGameOver(full_screen_img):
     return onScreen('VIEW_BATTLEFIELD', full_screen_img, cutoff=5000)
 
-def onScreen(element_to_look_for, full_screen_img, cutoff=10000):
+def onScreen(element_to_look_for, full_screen_img, cutoff=10000, save_img=False):
     (x1, y1) = VIEW_LOCATION_DICT[f'{element_to_look_for}_C1']
     (x2, y2) = VIEW_LOCATION_DICT[f'{element_to_look_for}_C2']
     img = full_screen_img[y1:y2,x1:x2]
-    # cv2.imwrite(f'test_{element_to_look_for}.png', img)
+    if save_img:
+        print('saving example image:')
+        cv2.imwrite(f'test_{element_to_look_for}.png', img)
     ref_img = REF_IMG_DICT[element_to_look_for]
     return areImgsSimilar(img, ref_img, cutoff=cutoff)
 
