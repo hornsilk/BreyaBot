@@ -76,10 +76,10 @@ def onHomeMenu(full_screen_img):
     return onScreen('HOME_MENU', full_screen_img)
 
 def hasPriority(full_screen_img):
-    return onScreen('PASS_BUTTON', full_screen_img, cutoff=7500)
+    return onScreen('PASS_BUTTON', full_screen_img, cutoff=6000)
 
 def hasBlockingPriority(full_screen_img):
-    return onScreen('BLOCK_BUTTON', full_screen_img)
+    return onScreen('BLOCK_BUTTON', full_screen_img, cutoff=7500)
 
 def isDialog(full_screen_img):
     return onScreen('DIALOG_DONE_BUTTON', full_screen_img)
