@@ -1,0 +1,24 @@
+install autohotkey from here: https://www.autohotkey.com/
+
+in terminal, install python3 and git
+`scoop install python3`
+`scoop install git`
+
+then install modules for python:
+`python3 -m pip install pypiwin32`
+`python3 -m pip install pynput`
+
+download the repository:
+git clone https://github.com/hornsilk/BreyaBot.git
+
+change directories to that repo
+`cd BreyaBot`
+
+run the autohotkey script:
+`click.ahk`
+
+open MTGA
+the default bot decklist is the decklist.txt file 
+
+run the bot script:
+`python3 main.py`
